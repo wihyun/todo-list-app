@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { MdHome, MdPeople, MdAdd } from 'react-icons/md';
-import { Link } from 'react-router-dom';
-import { useTodoDispatch, useTodoNextId } from '../TodoContext';
-import TodoModal from './TodoModal';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { MdHome, MdPeople, MdAdd } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { useTodoDispatch, useTodoNextId } from "../TodoContext";
+import TodoModal from "./TodoModal";
 
 const CircleButton = styled.button`
   background: #2c79b7;
@@ -79,7 +79,7 @@ const Menu = styled.div`
 
 function TodoMenu() {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
   const dispatch = useTodoDispatch();
   const nextId = useTodoNextId();
@@ -89,14 +89,14 @@ function TodoMenu() {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch({
-      type: 'CREATE',
+      type: "CREATE",
       todo: {
         id: nextId.current,
         text: value,
         done: false,
       },
     });
-    setValue('');
+    setValue("");
     setOpen(false);
     nextId.current += 1;
   };
@@ -106,12 +106,7 @@ function TodoMenu() {
       {open && (
         <TodoModal toggle={onToggle} header="할일 추가">
           <InsertForm onSubmit={onSubmit}>
-            <Input
-              autoFocus
-              placeholder="할 일을 입력 후, Enter 를 누르세요"
-              onChange={onChange}
-              value={value}
-            />
+            <Input autoFocus placeholder="할 일을 입력 후, Enter 를 누르세요" onChange={onChange} value={value} />
           </InsertForm>
         </TodoModal>
       )}
